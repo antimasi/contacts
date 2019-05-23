@@ -1,0 +1,56 @@
+<h1 class="text-center">Contact</h1>
+
+<div class="container">
+
+    <p>
+        <strong>Name:</strong>
+        <%= @contact.name %>
+    </p>
+    <p>
+        <strong>Date of birth:</strong>
+        <%= @contact.dateOfBirth %>
+    </p>
+    <br>
+
+    <h2>Phones</h2>
+
+    <% @contact.phones.each do |phones| %>
+
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Phone number:</strong>
+                <%= phones.phoneNumber %>
+            </div>
+            <div class="col-md-3">
+                <%= link_to 'Delete phone', [phones.contact, phones],
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+            </div>
+
+        </div>
+
+
+
+
+        <% end %>
+
+
+            <br>
+            <h2>Add a phone:</h2>
+
+            <%= form_for([@contact, @contact.phones.build])  do |form| %>
+
+                <p>
+                    Phone number<br />
+                    <%= form.text_field :phoneNumber %>
+                </p>
+
+                <p>
+                    <%= form.submit %>
+                </p>
+
+                <% end %>
+
+                    <%= link_to  "Back", contact_path  %>
+
+</div>

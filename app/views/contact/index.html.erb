@@ -1,0 +1,40 @@
+<h1 class="text-center">Contacts</h1>
+
+<div class="container">
+
+    <%= link_to  "New contact", :action => :new %>
+
+        <table>
+
+            <tr>
+                <th>Name: </th>
+                <th>Date of birth:</th>
+            </tr>
+            <% @contacts.each do |contact| %>
+
+                <tr>
+                    <td>
+                        <%= contact.name%>
+                    </td>
+                    <td>
+                        <%= contact.dateOfBirth%>
+                    </td>
+                    <td>
+                        <%= link_to 'Show',:action => :show, :id => contact.id %>
+                    </td>
+                    <td>
+                        <%= link_to 'Edit',:action => :edit, :id => contact.id %>
+                    </td>
+                    <td>
+                        <%= link_to 'Delete', { :action => :destroy, :id => contact.id },
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+                    </td>
+
+                </tr>
+
+                <% end %>
+
+        </table>
+
+</div>

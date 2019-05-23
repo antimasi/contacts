@@ -1,0 +1,38 @@
+<h1 class="text-center">Add a new Contact</h1>
+
+<div class="container">
+
+    <%= form_for :contact, :url => { :action => 'create' } do |form| %>
+
+        <% if @contact.errors.any? %>
+            <div id="errorExplanation" class="bg-danger">
+                <h2>
+                    <%= pluralize(@contact.errors.count, "error") %> prohibited this post from being saved:</h2>
+                <ul>
+                    <% @contact.errors.full_messages.each do |msg| %>
+                        <li>
+                            <%= msg %>
+                        </li>
+                        <% end %>
+                </ul>
+            </div>
+            <% end %>
+
+                <p>
+                    Name: <br>
+                    <%= form.text_field :name %>
+                </p>
+                <p>
+                    Date of birth<br>
+                    <%= form.date_field :dateOfBirth %>
+                </p>
+
+                <p>
+                    <%= form.submit%>
+                </p>
+                <% end %>
+
+                    <%= link_to  "Back", contact_path %>
+
+
+</div>
